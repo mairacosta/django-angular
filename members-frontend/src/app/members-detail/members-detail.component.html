@@ -1,2 +1,11 @@
-<p>members-detail works!</p>
-Membro carregado: {{ selected_member.name }} - {{ selected_member.surname }}
+<h3>Member Detail Component</h3>
+<span>Você está editando:</span> {{ selected_member.name }} - {{ selected_member.surname }}
+
+<input type='text' [(ngModel)]='selected_member.id' readonly> <br>
+<input type='text' [(ngModel)]='selected_member.name'> <br>
+<input type='text' [(ngModel)]='selected_member.surname'><br>
+<input type="text" [(ngModel)]="selected_member.phone"><br>
+<button (click)='update()' class='button'>Update Member</button>
+<button (click)='delete()' class='button'>Delete Member</button>
+
+<button (click)='newMember()' class='button primary'>Novo</button>

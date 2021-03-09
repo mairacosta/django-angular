@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { ApiService } from './api.service';
 
@@ -16,7 +17,7 @@ export class AppComponent {
     {name: 'Member 03', id: 3, surname:'Mujica', photo: 'http://www.minhaapp.com/photo3'},
   ];
 
-  constructor(private api:ApiService) {
+  constructor(private api:ApiService, private router: Router) {
     this.getMembers();
   }
 
@@ -32,13 +33,6 @@ export class AppComponent {
   };
 
   memberClicked = (member) => {
-    this.api.getMember(member.id).subscribe(
-      data => {
-        console.log(data);
-      },
-      error => {
-        console.log('ERRO', error.message);
-      }
-    );
+   this.router.navigate(['member-detail', member.id]);
   };
 }
